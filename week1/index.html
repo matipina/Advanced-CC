@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Learning Journey - From Basics to Grid & Flexbox</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Interactive editor styles */
+        .interactive-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 25px 0;
+            border: 2px solid #667eea;
+        }
+        
+        .code-editor {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 15px;
+        }
+        
+        .editor-panel {
+            background: white;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .editor-header {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 10px 15px;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        
+        .editor-content {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            padding: 15px;
+            min-height: 150px;
+            max-height: 300px;
+            overflow: auto;
+            border: none;
+            resize: vertical;
+            width: 100%;
+            line-height: 1.5;
+        }
+        
+        .preview-panel {
+            background: white;
+            padding: 20px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            min-height: 150px;
+        }
+        
+        .preview-header {
+            background: #667eea;
+            color: white;
+            padding: 10px 15px;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        
+        .edit-hint {
+            background: #d1ecf1;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            border-left: 4px solid #0c5460;
+            font-size: 0.9em;
+        }
+        
+        @media (max-width: 768px) {
+            .code-editor {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <h1>CSS Learning Journey</h1>
+        <ul>
+            <li><a href="#basics">CSS Basics</a></li>
+            <li><a href="#box-model">Box Model</a></li>
+            <li><a href="#flexbox">Flexbox</a></li>
+            <li><a href="#grid">Grid</a></li>
+            <li><a href="#practice">Practical Example</a></li>
+        </ul>
+    </nav>
+
+    <main class="page-container">
+        <!-- Section 1: CSS Basics -->
+        <section id="basics" class="lesson-section">
+            <h2>1. CSS Basics</h2>
+            <p class="intro">CSS (Cascading Style Sheets) is used to style and layout web pages. Let's start with the fundamentals!</p>
+            
+            <div class="lesson-card">
+                <h3>Selectors</h3>
+                <p>Selectors target HTML elements to apply styles:</p>
+                <div class="example-box">
+                    <p class="selector-example element-selector">Element selector: <code>p { color: blue; }</code></p>
+                    <p id="unique" class="selector-example">ID selector: <code>#unique { color: green; }</code></p>
+                    <p class="highlight selector-example">Class selector: <code>.highlight { background: yellow; }</code></p>
+                </div>
+            </div>
+
+            <div class="lesson-card">
+                <h3>Common Properties</h3>
+                <p>CSS properties control how elements look. Let's experiment!</p>
+                
+                <div class="interactive-section">
+                    <div class="edit-hint">
+                        ✏️ Change the values to see what happens! Try different colors, sizes, and styles.
+                    </div>
+                    
+                    <div class="code-editor">
+                        <div class="editor-panel">
+                            <div class="editor-header">CSS (Edit Me!)</div>
+                            <textarea class="editor-content" id="properties-css">.my-text {
+    color: #667eea;
+    background-color: #e0e7ff;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    padding: 15px;
+    border-radius: 8px;
+    border: 2px solid #667eea;
+    /* Try adding:
+       - text-decoration: underline;
+       - text-transform: uppercase;
+       - letter-spacing: 2px;
+       - line-height: 2;
+    */
+}</textarea>
+                        </div>
+                        
+                        <div class="editor-panel">
+                            <div class="preview-header">Live Preview</div>
+                            <div class="preview-panel" id="properties-preview"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <script>
+                    (function() {
+                        const css = document.getElementById('properties-css');
+                        const preview = document.getElementById('properties-preview');
+                        
+                        function updatePreview() {
+                            preview.innerHTML = `
+                                <style>
+                                    #properties-preview ${css.value}
+                                </style>
+                                <div class="my-text">
+                                    Experiment with CSS properties!
+                                </div>
+                            `;
+                        }
+                        
+                        css.addEventListener('input', updatePreview);
+                        updatePreview();
+                    })();
+                </script>
+            </div>
+        </section>
+
+        <!-- Section 2: Box Model -->
+        <section id="box-model" class="lesson-section">
+            <h2>2. The Box Model</h2>
+            <p class="intro">Every HTML element is a box with content, padding, border, and margin.</p>
+            
+            <div class="lesson-card">
+                <h3>Understanding the Box Model</h3>
+                <p>Each element consists of: <strong>content</strong> → <strong>padding</strong> → <strong>border</strong> → <strong>margin</strong></p>
+                
+                <div class="interactive-section">
+                    <div class="edit-hint">
+                        ✏️ Adjust the padding, border, and margin values to see how they affect the box!
+                    </div>
+                    
+                    <div class="code-editor">
+                        <div class="editor-panel">
+                            <div class="editor-header">CSS (Edit Me!)</div>
+                            <textarea class="editor-content" id="box-model-css">.box {
+    /* Space inside (around content) */
+    padding: 20px;
+    
+    /* Border around the padding */
+    border: 5px solid #667eea;
+    
+    /* Space outside (around border) */
+    margin: 15px;
+    
+    /* Other styling */
+    background: #e0e7ff;
+    border-radius: 8px;
+}</textarea>
+                        </div>
+                        
+                        <div class="editor-panel">
+                            <div class="preview-header">Live Preview</div>
+                            <div class="preview-panel" id="box-model-preview"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <script>
+                    (function() {
+                        const css = document.getElementById('box-model-css');
+                        const preview = document.getElementById('box-model-preview');
+                        
+                        function updatePreview() {
+                            preview.innerHTML = `
+                                <style>
+                                    #box-model-preview .content {
+                                        background: #fbbf24;
+                                        padding: 10px;
+                                        font-weight: bold;
+                                    }
+                                    ${css.value}
+                                </style>
+                                <div style="background: #fecaca; padding: 10px; border-radius: 5px;">
+                                    <p style="margin: 0; font-size: 0.8em;">⬅️ This red area shows the margin</p>
+                                    <div class="box">
+                                        <div class="content">This is the content</div>
+                                    </div>
+                                </div>
+                            `;
+                        }
+                        
+                        css.addEventListener('input', updatePreview);
+                        updatePreview();
+                    })();
+                </script>
+            </div>
+
+            <div class="lesson-card">
+                <h3>Box Sizing</h3>
+                <div class="box-sizing-demo">
+                    <div class="box-default">
+                        <p>box-sizing: content-box (default)</p>
+                        <p>Width = content only</p>
+                    </div>
+                    <div class="box-border">
+                        <p>box-sizing: border-box</p>
+                        <p>Width = content + padding + border</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Flexbox -->
+        <section id="flexbox" class="lesson-section">
+            <h2>3. Flexbox - Flexible Box Layout</h2>
+            <p class="intro">Flexbox is perfect for one-dimensional layouts (rows or columns).</p>
+            
+            <div class="lesson-card">
+                <h3>Understanding Display Flex</h3>
+                <p><strong>Important:</strong> <code>display: flex</code> creates a flex container that affects only its <strong>direct children</strong>.</p>
+                
+                <div class="interactive-section">
+                    <div class="edit-hint">
+                        ✏️ <strong>Try it yourself!</strong> Edit the CSS below and watch the preview update in real-time.
+                    </div>
+                    
+                    <div class="code-editor">
+                        <div class="editor-panel">
+                            <div class="editor-header">CSS (Edit Me!)</div>
+                            <textarea class="editor-content" id="flex-basic-css">.container {
+    display: flex;
+    gap: 10px;
+    /* Try changing these: */
+    flex-direction: row;
+    justify-content: flex-start;
+}</textarea>
+                        </div>
+                        
+                        <div class="editor-panel">
+                            <div class="preview-header">Live Preview</div>
+                            <div class="preview-panel" id="flex-basic-preview"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <script>
+                    (function() {
+                        const css = document.getElementById('flex-basic-css');
+                        const preview = document.getElementById('flex-basic-preview');
+                        
+                        function updatePreview() {
+                            preview.innerHTML = `
+                                <style>
+                                    #flex-basic-preview .container {
+                                        background: #f0f0f0;
+                                        padding: 15px;
+                                        border-radius: 5px;
+                                    }
+                                    #flex-basic-preview .item {
+                                        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                                        color: white;
+                                        padding: 15px;
+                                        border-radius: 5px;
+                                        font-weight: bold;
+                                    }
+                                    ${css.value}
+                                </style>
+                                <div class="container">
+                                    <div class="item">Item 1</div>
+                                    <div class="item">Item 2</div>
+                                    <div class="item">Item 3</div>
+                                </div>
+                            `;
+                        }
+                        
+                        css.addEventListener('input', updatePreview);
+                        updatePreview();
+                    })();
+                </script>
+            </div>
+
+            <div class="lesson-card">
+                <h3>Display: Flex vs Inline-Flex</h3>
+                <p><code>display: flex</code> makes the container block-level, while <code>display: inline-flex</code> makes it inline.</p>
+                
+                <div class="interactive-section">
+                    <div class="edit-hint">
+                        ✏️ Change <code>display: flex</code> to <code>display: inline-flex</code> and see the difference!
+                    </div>
+                    
+                    <div class="code-editor">
+                        <div class="editor-panel">
+                            <div class="editor-header">CSS (Edit Me!)</div>
+                            <textarea class="editor-content" id="flex-inline-css">.box {
+    display: flex;
+    /* Try: inline-flex */
+    gap: 5px;
+    padding: 10px;
+    background: #e0e7ff;
+    border-radius: 5px;
+}</textarea>
+                        </div>
+                        
+                        <div class="editor-panel">
+                            <div class="preview-header">Live Preview</div>
+                            <div class="preview-panel" id="flex-inline-preview"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <script>
+                    (function() {
+                        const css = document.getElementById('flex-inline-css');
+                        const preview = document.getElementById('flex-inline-preview');
+                        
+                        function updatePreview() {
+                            preview.innerHTML = `
+                                <style>
+                                    #flex-inline-preview .item {
+                                        background: #667eea;
+                                        color: white;
+                                        padding: 8px 12px;
+                                        border-radius: 3px;
+                                    }
+                                    ${css.value}
+                                </style>
+                                <p>Text before</p>
+                                <div class="box">
+                                    <div class="item">A</div>
+                                    <div class="item">B</div>
+                                    <div class="item">C</div>
+                                </div>
+                                <p>Text after</p>
+                            `;
+                        }
+                        
+                        css.addEventListener('input', updatePreview);
+                        updatePreview();
+                    })();
+                </script>
+            </div>
+
+            <div class="lesson-card">
+                <h3>Direct Children Only!</h3>
+                <p>Flexbox only affects <strong>direct children</strong> of the flex container, not nested elements.</p>
+                
+                <div class="interactive-section">
+                    <div class="edit-hint">
+                        ✏️ Notice: Only the direct children (.child) are flex items. The .grandchild is not affected!
+                    </div>
+                    
+                    <div class="code-editor">
+                        <div class="editor-panel">
+                            <div class="editor-header">CSS (Edit Me!)</div>
+                            <textarea class="editor-content" id="flex-children-css">.container {
+    display: flex;
+    gap: 10px;
+    /* These properties only affect direct children */
+    justify-content: space-around;
+}
+
+.child {
+    background: #667eea;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.grandchild {
+    background: #f093fb;
+    padding: 5px;
+    margin-top: 5px;
+    border-radius: 3px;
+    /* This is NOT a flex item */
+}</textarea>
+                        </div>
+                        
+                        <div class="editor-panel">
+                            <div class="preview-header">Live Preview</div>
+                            <div class="preview-panel" id="flex-children-preview"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <script>
+                    (function() {
+                        const css = document.getElementById('flex-children-css');
+                        const preview = document.getElementById('flex-children-preview');
+                        
+                        function updatePreview() {
+                            preview.innerHTML = `
+                                <style>
+                                    ${css.value}
+                                </style>
+                                <div class="container">
+                                    <div class="child">
+                                        Child 1 (flex item)
+                                        <div class="grandchild">Grandchild (NOT flex item)</div>
+                                    </div>
+                                    <div class="child">
+                                        Child 2 (flex item)
+                                    </div>
+                                </div>
+                            `;
+                        }
+                        
+                        css.addEventListener('input', updatePreview);
+                        updatePreview();
+                    })();
+                </script>
+            </div>
+
+            <div class="lesson-card">
+                <h3>Flex Direction</h3>
+                <div class="flex-demo" style="flex-direction: row;">
+                    <div class="flex-item">1</div>
+                    <div class="flex-item">2</div>
+                    <div class="flex-item">3</div>
+                </div>
+                <p><code>flex-direction: row;</code> (default)</p>
+                
+                <div class="flex-demo" style="flex-direction: column; height: 200px;">
+                    <div class="flex-item">1</div>
+                    <div class="flex-item">2</div>
+                    <div class="flex-item">3</div>
+                </div>
+                <p><code>flex-direction: column;</code></p>
+            </div>
+
+            <div class="lesson-card">
+                <h3>Justify Content (Main Axis)</h3>
+                <p>Controls how items are distributed along the main axis.</p>
+                
+                <div class="interactive-section">
+                    <div class="edit-hint">
+                        ✏️ Try different values: <code>flex-start</code>, <code>center</code>, <code>space-between</code>, <code>space-around</code>, <code>space-evenly</code>
+                    </div>
+                    
+                    <div class="code-editor">
+                        <div class="editor-panel">
+                            <div class="editor-header">CSS (Edit Me!)</div>
+                            <textarea class="editor-content" id="justify-css">.container {
+    display: flex;
+    justify-content: flex-start;
+    /* Try these values:
+       - center
+       - space-between
+       - space-around
+       - space-evenly
+       - flex-end
+    */
+    gap: 10px;
+}</textarea>
+                        </div>
+                        
+                        <div class="editor-panel">
+                            <div class="preview-header">Live Preview</div>
+                            <div class="preview-panel" id="justify-preview"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <script>
+                    (function() {
+                        const css = document.getElementById('justify-css');
+                        const preview = document.getElementById('justify-preview');
+                        
+                        function updatePreview() {
+                            preview.innerHTML = `
+                                <style>
+                                    #justify-preview .item {
+                                        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                                        color: white;
+                                        padding: 20px;
+                                        border-radius: 5px;
+                                        font-weight: bold;
+                                    }
+                                    ${css.value}
+                                </style>
+                                <div class="container">
+                                    <div class="item">1</div>
+                                    <div class="item">2</div>
+                                    <div class="item">3</div>
+                                </div>
+                            `;
+                        }
+                        
+                        css.addEventListener('input', updatePreview);
+                        updatePreview();
+                    })();
+                </script>
+            </div>
+
+            <div class="lesson-card">
+                <h3>Align Items (Cross Axis)</h3>
+                <p>Controls how items are aligned perpendicular to the main axis.</p>
+                
+                <div class="interactive-section">
+                    <div class="edit-hint">
+                        ✏️ Try different values: <code>flex-start</code>, <code>center</code>, <code>flex-end</code>, <code>stretch</code>, <code>baseline</code>
+                    </div>
+                    
+                    <div class="code-editor">
+                        <div class="editor-panel">
+                            <div class="editor-header">CSS (Edit Me!)</div>
+                            <textarea class="editor-content" id="align-css">.container {
+    display: flex;
+    align-items: center;
+    /* Try these values:
+       - flex-start
+       - flex-end
+       - center
+       - stretch
+       - baseline
+    */
+    height: 150px;
+    gap: 10px;
+}</textarea>
+                        </div>
+                        
+                        <div class="editor-panel">
+                            <div class="preview-header">Live Preview</div>
+                            <div class="preview-panel" id="align-preview"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <script>
+                    (function() {
+                        const css = document.getElementById('align-css');
+                        const preview = document.getElementById('align-preview');
+                        
+                        function updatePreview() {
+                            preview.innerHTML = `
+                                <style>
+                                    #align-preview .container {
+                                        background: #f0f0f0;
+                                        border-radius: 5px;
+                                    }
+                                    #align-preview .item {
+                                        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                                        color: white;
+                                        padding: 20px;
+                                        border-radius: 5px;
+                                        font-weight: bold;
+                                    }
+                                    #align-preview .tall {
+                                        padding: 40px 20px;
+                                    }
+                                    ${css.value}
+                                </style>
+                                <div class="container">
+                                    <div class="item">Item 1</div>
+                                    <div class="item tall">Tall Item</div>
+                                    <div class="item">Item 3</div>
+                                </div>
+                            `;
+                        }
+                        
+                        css.addEventListener('input', updatePreview);
+                        updatePreview();
+                    })();
+                </script>
+            </div>
+
+            <div class="lesson-card">
+                <h3>Flex Item Properties</h3>
+                <div class="flex-demo">
+                    <div class="flex-item" style="flex: 1;">flex: 1</div>
+                    <div class="flex-item" style="flex: 2;">flex: 2</div>
+                    <div class="flex-item" style="flex: 1;">flex: 1</div>
+                </div>
+                <p>The <code>flex</code> property makes items grow to fill available space.</p>
+            </div>
+        </section>
+
+        <!-- Section 4: Grid -->
+        <section id="grid" class="lesson-section">
+            <h2>4. CSS Grid - Two-Dimensional Layout</h2>
+            <p class="intro">Grid is perfect for complex two-dimensional layouts with rows and columns.</p>
+            
+            <div class="lesson-card">
+                <h3>Basic Grid Layout</h3>
+                <p>Create a grid by setting <code>display: grid</code> and defining columns.</p>
+                
+                <div class="interactive-section">
+                    <div class="edit-hint">
+                        ✏️ Try different column configurations! Use <code>1fr</code>, <code>2fr</code>, <code>100px</code>, or <code>repeat(4, 1fr)</code>
+                    </div>
+                    
+                    <div class="code-editor">
+                        <div class="editor-panel">
+                            <div class="editor-header">CSS (Edit Me!)</div>
+                            <textarea class="editor-content" id="grid-basic-css">.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    /* Try these:
+       - 1fr 2fr 1fr
+       - repeat(4, 1fr)
+       - 100px 200px 1fr
+       - repeat(auto-fit, minmax(100px, 1fr))
+    */
+    gap: 10px;
+}</textarea>
+                        </div>
+                        
+                        <div class="editor-panel">
+                            <div class="preview-header">Live Preview</div>
+                            <div class="preview-panel" id="grid-basic-preview"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <script>
+                    (function() {
+                        const css = document.getElementById('grid-basic-css');
+                        const preview = document.getElementById('grid-basic-preview');
+                        
+                        function updatePreview() {
+                            preview.innerHTML = `
+                                <style>
+                                    #grid-basic-preview .item {
+                                        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+                                        color: white;
+                                        padding: 20px;
+                                        border-radius: 5px;
+                                        text-align: center;
+                                        font-weight: bold;
+                                    }
+                                    ${css.value}
+                                </style>
+                                <div class="container">
+                                    <div class="item">1</div>
+                                    <div class="item">2</div>
+                                    <div class="item">3</div>
+                                    <div class="item">4</div>
+                                    <div class="item">5</div>
+                                    <div class="item">6</div>
+                                </div>
+                            `;
+                        }
+                        
+                        css.addEventListener('input', updatePreview);
+                        updatePreview();
+                    })();
+                </script>
+            </div>
+
+            <div class="lesson-card">
+                <h3>Grid Template Columns</h3>
+                <div class="grid-demo" style="grid-template-columns: 100px 200px 1fr;">
+                    <div class="grid-item">100px</div>
+                    <div class="grid-item">200px</div>
+                    <div class="grid-item">1fr (fills rest)</div>
+                </div>
+                <p><code>grid-template-columns: 100px 200px 1fr;</code></p>
+
+                <div class="grid-demo" style="grid-template-columns: repeat(4, 1fr);">
+                    <div class="grid-item">1</div>
+                    <div class="grid-item">2</div>
+                    <div class="grid-item">3</div>
+                    <div class="grid-item">4</div>
+                </div>
+                <p><code>grid-template-columns: repeat(4, 1fr);</code></p>
+            </div>
+
+            <div class="lesson-card">
+                <h3>Grid Spanning - Making Items Larger</h3>
+                <p>Use <code>grid-column</code> and <code>grid-row</code> to make items span multiple cells.</p>
+                
+                <div class="interactive-section">
+                    <div class="edit-hint">
+                        ✏️ Change the grid-column values to make items span different amounts! Try <code>1 / 4</code> to span 3 columns.
+                    </div>
+                    
+                    <div class="code-editor">
+                        <div class="editor-panel">
+                            <div class="editor-header">CSS (Edit Me!)</div>
+                            <textarea class="editor-content" id="grid-span-css">.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.item1 {
+    grid-column: 1 / 3;
+    /* Spans from line 1 to line 3 (2 columns) */
+}
+
+.item4 {
+    grid-column: 2 / 4;
+    /* Try: 1 / 4 to span all columns */
+}</textarea>
+                        </div>
+                        
+                        <div class="editor-panel">
+                            <div class="preview-header">Live Preview</div>
+                            <div class="preview-panel" id="grid-span-preview"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <script>
+                    (function() {
+                        const css = document.getElementById('grid-span-css');
+                        const preview = document.getElementById('grid-span-preview');
+                        
+                        function updatePreview() {
+                            preview.innerHTML = `
+                                <style>
+                                    #grid-span-preview .item {
+                                        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+                                        color: white;
+                                        padding: 20px;
+                                        border-radius: 5px;
+                                        text-align: center;
+                                        font-weight: bold;
+                                    }
+                                    ${css.value}
+                                </style>
+                                <div class="container">
+                                    <div class="item item1">Item 1 (spans 2)</div>
+                                    <div class="item">Item 2</div>
+                                    <div class="item">Item 3</div>
+                                    <div class="item item4">Item 4 (spans 2)</div>
+                                </div>
+                            `;
+                        }
+                        
+                        css.addEventListener('input', updatePreview);
+                        updatePreview();
+                    })();
+                </script>
+            </div>
+
+            <div class="lesson-card">
+                <h3>Grid Template Areas (Named Grid)</h3>
+                <div class="grid-demo grid-template-demo">
+                    <div class="grid-item header-area">Header</div>
+                    <div class="grid-item sidebar-area">Sidebar</div>
+                    <div class="grid-item main-area">Main Content</div>
+                    <div class="grid-item footer-area">Footer</div>
+                </div>
+                <pre><code>.container {
+    display: grid;
+    grid-template-areas:
+        "header header"
+        "sidebar main"
+        "footer footer";
+}
+.header { grid-area: header; }
+.sidebar { grid-area: sidebar; }</code></pre>
+            </div>
+        </section>
+
+        <!-- Section 5: Practical Example -->
+        <section id="practice" class="lesson-section">
+            <h2>5. Practical Example - Building a Dashboard</h2>
+            <p class="intro">Let's combine everything we learned to build a modern dashboard layout!</p>
+            
+            <div class="lesson-card">
+                <h3>Step 1: Basic Structure</h3>
+                <p>We'll start with a simple grid layout for the main dashboard structure.</p>
+                <div class="dashboard step-1">
+                    <header class="dashboard-header">
+                        <h2>Dashboard</h2>
+                    </header>
+                    <nav class="dashboard-nav">
+                        <p>Navigation</p>
+                    </nav>
+                    <main class="dashboard-main">
+                        <p>Main Content Area</p>
+                    </main>
+                </div>
+            </div>
+
+            <div class="lesson-card">
+                <h3>Step 2: Add Navigation Items (Flexbox)</h3>
+                <p>Using Flexbox inside the navigation to align items.</p>
+                <div class="dashboard step-2">
+                    <header class="dashboard-header">
+                        <h2>Dashboard</h2>
+                        <div class="header-actions">
+                            <button>Profile</button>
+                            <button>Settings</button>
+                        </div>
+                    </header>
+                    <nav class="dashboard-nav">
+                        <a href="#" class="nav-item">📊 Dashboard</a>
+                        <a href="#" class="nav-item">📈 Analytics</a>
+                        <a href="#" class="nav-item">👥 Users</a>
+                        <a href="#" class="nav-item">⚙️ Settings</a>
+                    </nav>
+                    <main class="dashboard-main">
+                        <p>Main Content Area</p>
+                    </main>
+                </div>
+            </div>
+
+            <div class="lesson-card">
+                <h3>Step 3: Add Content Cards (Grid)</h3>
+                <p>Using Grid to layout cards in the main content area.</p>
+                <div class="dashboard step-3">
+                    <header class="dashboard-header">
+                        <h2>Dashboard</h2>
+                        <div class="header-actions">
+                            <button>Profile</button>
+                            <button>Settings</button>
+                        </div>
+                    </header>
+                    <nav class="dashboard-nav">
+                        <a href="#" class="nav-item">📊 Dashboard</a>
+                        <a href="#" class="nav-item">📈 Analytics</a>
+                        <a href="#" class="nav-item">👥 Users</a>
+                        <a href="#" class="nav-item">⚙️ Settings</a>
+                    </nav>
+                    <main class="dashboard-main">
+                        <div class="cards-grid">
+                            <div class="card">
+                                <h3>Total Users</h3>
+                                <p class="card-value">1,234</p>
+                            </div>
+                            <div class="card">
+                                <h3>Revenue</h3>
+                                <p class="card-value">$45,678</p>
+                            </div>
+                            <div class="card">
+                                <h3>Active Now</h3>
+                                <p class="card-value">89</p>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+            </div>
+
+            <div class="lesson-card">
+                <h3>Step 4: Full Dashboard with Charts Section</h3>
+                <p>Final version with additional sections using both Flexbox and Grid.</p>
+                <div class="dashboard step-4">
+                    <header class="dashboard-header">
+                        <h2>Dashboard</h2>
+                        <div class="header-actions">
+                            <button>Profile</button>
+                            <button>Settings</button>
+                        </div>
+                    </header>
+                    <nav class="dashboard-nav">
+                        <a href="#" class="nav-item active">📊 Dashboard</a>
+                        <a href="#" class="nav-item">📈 Analytics</a>
+                        <a href="#" class="nav-item">👥 Users</a>
+                        <a href="#" class="nav-item">⚙️ Settings</a>
+                    </nav>
+                    <main class="dashboard-main">
+                        <div class="cards-grid">
+                            <div class="card">
+                                <h3>Total Users</h3>
+                                <p class="card-value">1,234</p>
+                                <p class="card-change positive">+12% from last month</p>
+                            </div>
+                            <div class="card">
+                                <h3>Revenue</h3>
+                                <p class="card-value">$45,678</p>
+                                <p class="card-change positive">+8% from last month</p>
+                            </div>
+                            <div class="card">
+                                <h3>Active Now</h3>
+                                <p class="card-value">89</p>
+                                <p class="card-change negative">-3% from last hour</p>
+                            </div>
+                        </div>
+                        <div class="content-grid">
+                            <div class="chart-section">
+                                <h3>Weekly Statistics</h3>
+                                <div class="chart-placeholder">
+                                    <p>Chart Area</p>
+                                </div>
+                            </div>
+                            <div class="recent-activity">
+                                <h3>Recent Activity</h3>
+                                <div class="activity-item">
+                                    <p><strong>John Doe</strong> logged in</p>
+                                    <span>2 min ago</span>
+                                </div>
+                                <div class="activity-item">
+                                    <p><strong>Jane Smith</strong> updated profile</p>
+                                    <span>15 min ago</span>
+                                </div>
+                                <div class="activity-item">
+                                    <p><strong>Bob Johnson</strong> made a purchase</p>
+                                    <span>1 hour ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+            </div>
+
+            <div class="lesson-card">
+                <h3>🎯 Practice Challenge: Build Your Own Card Layout</h3>
+                <p>Now it's your turn! Create a card layout using what you've learned.</p>
+                
+                <div class="interactive-section">
+                    <div class="edit-hint">
+                        ✏️ <strong>Challenge:</strong> Use Grid for the container and Flexbox inside each card. Try creating a 3-column layout!
+                    </div>
+                    
+                    <div class="code-editor">
+                        <div class="editor-panel">
+                            <div class="editor-header">CSS (Create Your Layout!)</div>
+                            <textarea class="editor-content" id="challenge-css">.container {
+    /* Add your grid layout here */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    
+    /* Use flexbox inside the card */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.card-header {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #667eea;
+}
+
+.card-content {
+    color: #666;
+    flex: 1;
+}
+
+.card-footer {
+    padding-top: 10px;
+    border-top: 1px solid #e0e0e0;
+    font-size: 0.9em;
+}</textarea>
+                        </div>
+                        
+                        <div class="editor-panel">
+                            <div class="preview-header">Live Preview</div>
+                            <div class="preview-panel" id="challenge-preview"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <script>
+                    (function() {
+                        const css = document.getElementById('challenge-css');
+                        const preview = document.getElementById('challenge-preview');
+                        
+                        function updatePreview() {
+                            preview.innerHTML = `
+                                <style>
+                                    ${css.value}
+                                </style>
+                                <div class="container">
+                                    <div class="card">
+                                        <div class="card-header">Card 1</div>
+                                        <div class="card-content">This is the content of card 1.</div>
+                                        <div class="card-footer">Footer</div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header">Card 2</div>
+                                        <div class="card-content">This card has more content to show how flex works.</div>
+                                        <div class="card-footer">Footer</div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header">Card 3</div>
+                                        <div class="card-content">Short content.</div>
+                                        <div class="card-footer">Footer</div>
+                                    </div>
+                                </div>
+                            `;
+                        }
+                        
+                        css.addEventListener('input', updatePreview);
+                        updatePreview();
+                    })();
+                </script>
+            </div>
+
+            <div class="lesson-card">
+                <h3>🎉 Congratulations!</h3>
+                <p>You've learned the fundamentals of CSS, including:</p>
+                <ul>
+                    <li>✅ CSS Selectors and Properties</li>
+                    <li>✅ The Box Model</li>
+                    <li>✅ Flexbox for one-dimensional layouts</li>
+                    <li>✅ Grid for two-dimensional layouts</li>
+                    <li>✅ Building a practical dashboard combining both</li>
+                    <li>✅ Interactive coding with live previews</li>
+                </ul>
+                <p><strong>Next Steps:</strong> Try modifying the dashboard, add more cards, change colors, or experiment with different layouts!</p>
+                <p><strong>Keep Practicing:</strong> Open <code>playground.html</code> for more experimentation space!</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <p>CSS Learning Journey © 2026 - Keep practicing and building!</p>
+    </footer>
+</body>
+</html>

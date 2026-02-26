@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Quick Reference</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .reference-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+        }
+
+        .reference-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .reference-card h2 {
+            color: #667eea;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .reference-card h3 {
+            color: #333;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .property {
+            background: #f8f9fa;
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 5px;
+            border-left: 3px solid #667eea;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        .property .prop-name {
+            color: #e83e8c;
+            font-weight: bold;
+        }
+
+        .property .prop-value {
+            color: #0066cc;
+        }
+
+        .section-note {
+            background: #fff3cd;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 15px 0;
+            border-left: 4px solid #ffc107;
+            font-size: 0.9em;
+        }
+
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: #e83e8c;
+        }
+
+        .example {
+            background: #e7f3ff;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📚 CSS Quick Reference Guide</h1>
+            <p>A handy reference for CSS properties, Flexbox, and Grid</p>
+        </div>
+
+        <div class="reference-grid">
+            <!-- Flexbox Reference -->
+            <div class="reference-card">
+                <h2>Flexbox Properties</h2>
+                
+                <h3>Container Properties</h3>
+                <div class="property">
+                    <span class="prop-name">display:</span> <span class="prop-value">flex;</span>
+                </div>
+                
+                <div class="property">
+                    <span class="prop-name">flex-direction:</span><br>
+                    <span class="prop-value">row | row-reverse | column | column-reverse</span>
+                </div>
+                
+                <div class="property">
+                    <span class="prop-name">justify-content:</span><br>
+                    <span class="prop-value">flex-start | flex-end | center | space-between | space-around | space-evenly</span>
+                </div>
+                
+                <div class="property">
+                    <span class="prop-name">align-items:</span><br>
+                    <span class="prop-value">stretch | flex-start | flex-end | center | baseline</span>
+                </div>
+                
+                <div class="property">
+                    <span class="prop-name">flex-wrap:</span><br>
+                    <span class="prop-value">nowrap | wrap | wrap-reverse</span>
+                </div>
+                
+                <div class="property">
+                    <span class="prop-name">gap:</span> <span class="prop-value">10px;</span>
+                </div>
+
+                <h3>Item Properties</h3>
+                <div class="property">
+                    <span class="prop-name">flex:</span> <span class="prop-value">1;</span>
+                    <span style="color: #666;"> /* grow, shrink, basis */</span>
+                </div>
+                
+                <div class="property">
+                    <span class="prop-name">flex-grow:</span> <span class="prop-value">1;</span>
+                </div>
+                
+                <div class="property">
+                    <span class="prop-name">flex-shrink:</span> <span class="prop-value">1;</span>
+                </div>
+                
+                <div class="property">
+                    <span class="prop-name">align-self:</span><br>
+                    <span class="prop-value">auto | flex-start | flex-end | center | baseline | stretch</span>
+                </div>
+
+                <div class="section-note">
+                    <strong>Remember:</strong> justify-content = main axis, align-items = cross axis
+                </div>
+            </div>
+
+            <!-- Grid Reference -->
+            <div class="reference-card">
+                <h2>Grid Properties</h2>
+                
+                <h3>Container Properties</h3>
+                <div class="property">
+                    <span class="prop-name">display:</span> <span class="prop-value">grid;</span>
+                </div>
+                
+                <div class="property">
+                    <span class="prop-name">grid-template-columns:</span><br>
+                    <span class="prop-value">100px 200px 1fr;</span>
+                </div>
+                
+                <div class="property">
+                    <span class="prop-name">grid-template-columns:</span><br>
+                    <span class="prop-value">repeat(3, 1fr);</span>
+                </div>
+                
+                <div class="property">
+                    <span class="prop-name">grid-template-rows:</span><br>
+                    <span class="prop-value">100px auto 100px;</span>
+                </div>
+                
+                <div class="property">
+                    <span class="prop-name">gap:</span> <span class="prop-value">20px;</span><br>
+                    <span class="prop-name">row-gap:</span> <span class="prop-value">10px;</span><br>
+                    <span class="prop-name">column-gap:</span> <span class="prop-value">20px;</span>
+                </div>
+
+                <h3>Grid Template Areas</h3>
+                <div class="example">
+grid-template-areas:<br>
+&nbsp;&nbsp;"header header header"<br>
+&nbsp;&nbsp;"sidebar main main"<br>
+&nbsp;&nbsp;"footer footer footer";
+                </div>
+
+                <h3>Item Properties</h3>
+                <div class="property">
+                    <span class="prop-name">grid-column:</span> <span class="prop-value">1 / 3;</span>
+                    <span style="color: #666;"> /* start / end */</span>
+                </div>
+                
+                <div class="property">
+                    <span class="prop-name">grid-row:</span> <span class="prop-value">1 / 3;</span>
+                </div>
+                
+                <div class="property">
+                    <span class="prop-name">grid-area:</span> <span class="prop-value">header;</span>
+                </div>
+
+                <div class="section-note">
+                    <strong>Tip:</strong> Use <code>fr</code> units for flexible columns/rows
+                </div>
+            </div>
+
+            <!-- Box Model -->
+            <div class="reference-card">
+                <h2>Box Model</h2>
+                
+                <div class="property">
+                    <span class="prop-name">width:</span> <span class="prop-value">300px;</span>
+                </div>
+                
+                <div class="property">
+                    <span class="prop-name">height:</span> <span class="prop-value">200px;</span>
+                </div>
+                
+                <div class="property">
+                    <span class="prop-name">padding:</span> <span class="prop-value">20px;</span><br>
+                    <span style="color: #666;">/* all sides */</span>
+                </div>
+                
+                <div class="property">
+                    <span class="prop-name">padding:</span> <span class="prop-value">10px 20px;</span><br>
+                    <span style="color: #666;">/* top-bottom left-right */</span>
+                </div>
+                
+                <div class="property">
+                    <span class="prop-name">padding:</span> <span class="prop-value">10px 20px 15px 25px;</span><br>
+                    <span style="color: #666;">/* top right bottom left */</span>
+                </div>
+                
+                <div class="property">
+                    <span class="prop-name">margin:</span> <span class="prop-value">20px;</span>
+                    <span style="color: #666;">/* same syntax as padding */</span>
+                </div>
+                
+                <div class="property">
+                    <span class="prop-name">border:</span> <span class="prop-value">2px solid #333;</span>
+                </div>
+                
+                <div class="property">
+                    <span class="prop-name">border-radius:</span> <span class="prop-value">10px;</span>
+                </div>
+                
+                <div class="property">
+                    <span class="prop-name">box-sizing:</span> <span class="prop-value">border-box;</span>
+                    <span style="color: #666;">/* recommended! */</span>
+                </div>
+
+                <div class="section-note">
+                    <strong>Best Practice:</strong> Always use <code>box-sizing: border-box;</code>
+                </div>
+            </div>
+
+            <!-- Typography -->
+            <div class="reference-card">
+                <h2>Typography</h2>
+                
+                <div class="property">
+                    <span class="prop-name">font-family:</span> <span class="prop-value">Arial, sans-serif;</span>
+                </div>
+                
+                <div class="property">
+                    <span class="prop-name">font-size:</span> <span class="prop-value">16px;</span>
+                </div>
+                
+                <div class="property">
+                    <span class="prop-name">font-weight:</span><br>
+                    <span class="prop-value">normal | bold | 100-900</span>
+                </div>
+                
+                <div class="property">
+                    <span class="prop-name">font-style:</span><br>
+                    <span class="prop-value">normal | italic</span>
+                </div>
+                
+                <div class="property">
+                    <span class="prop-name">text-align:</span><br>
+                    <span class="prop-value">left | center | right | justify</span>
+                </div>
+                
+                <div class="property">
+                    <span class="prop-name">text-decoration:</span><br>
+                    <span class="prop-value">none | underline | line-through</span>
+                </div>
+                
+                <div class="property">
+                    <span class="prop-name">line-height:</span> <span class="prop-value">1.6;</span>
+                </div>
+                
+                <div class="property">
+                    <span class="prop-name">letter-spacing:</span> <span class="prop-value">2px;</span>
+                </div>
+            </div>
+
+            <!-- Colors & Backgrounds -->
+            <div class="reference-card">
+                <h2>Colors & Backgrounds</h2>
+                
+                <div class="property">
+                    <span class="prop-name">color:</span> <span class="prop-value">#333;</span>
+                </div>
+                
+                <div class="property">
+                    <span class="prop-name">color:</span> <span class="prop-value">rgb(255, 0, 0);</span>
+                </div>
+                
+                <div class="property">
+                    <span class="prop-name">color:</span> <span class="prop-value">rgba(255, 0, 0, 0.5);</span>
+                </div>
+                
+                <div class="property">
+                    <span class="prop-name">background-color:</span> <span class="prop-value">#f0f0f0;</span>
+                </div>
+                
+                <div class="property">
+                    <span class="prop-name">background-image:</span><br>
+                    <span class="prop-value">url('image.jpg');</span>
+                </div>
+                
+                <div class="property">
+                    <span class="prop-name">background:</span><br>
+                    <span class="prop-value">linear-gradient(135deg, #667eea 0%, #764ba2 100%);</span>
+                </div>
+                
+                <div class="property">
+                    <span class="prop-name">opacity:</span> <span class="prop-value">0.8;</span>
+                    <span style="color: #666;">/* 0.0 to 1.0 */</span>
+                </div>
+            </div>
+
+            <!-- Positioning -->
+            <div class="reference-card">
+                <h2>Positioning</h2>
+                
+                <div class="property">
+                    <span class="prop-name">position:</span><br>
+                    <span class="prop-value">static | relative | absolute | fixed | sticky</span>
+                </div>
+                
+                <div class="property">
+                    <span class="prop-name">top:</span> <span class="prop-value">10px;</span><br>
+                    <span class="prop-name">right:</span> <span class="prop-value">10px;</span><br>
+                    <span class="prop-name">bottom:</span> <span class="prop-value">10px;</span><br>
+                    <span class="prop-name">left:</span> <span class="prop-value">10px;</span>
+                </div>
+                
+                <div class="property">
+                    <span class="prop-name">z-index:</span> <span class="prop-value">100;</span>
+                </div>
+
+                <div class="section-note">
+                    <strong>Note:</strong> top/right/bottom/left only work with positioned elements
+                </div>
+            </div>
+
+            <!-- Display & Visibility -->
+            <div class="reference-card">
+                <h2>Display & Visibility</h2>
+                
+                <div class="property">
+                    <span class="prop-name">display:</span><br>
+                    <span class="prop-value">block | inline | inline-block | none</span>
+                </div>
+                
+                <div class="property">
+                    <span class="prop-name">display:</span> <span class="prop-value">flex;</span>
+                </div>
+                
+                <div class="property">
+                    <span class="prop-name">display:</span> <span class="prop-value">grid;</span>
+                </div>
+                
+                <div class="property">
+                    <span class="prop-name">visibility:</span><br>
+                    <span class="prop-value">visible | hidden</span>
+                </div>
+                
+                <div class="property">
+                    <span class="prop-name">overflow:</span><br>
+                    <span class="prop-value">visible | hidden | scroll | auto</span>
+                </div>
+            </div>
+
+            <!-- Effects -->
+            <div class="reference-card">
+                <h2>Effects & Transitions</h2>
+                
+                <div class="property">
+                    <span class="prop-name">box-shadow:</span><br>
+                    <span class="prop-value">0 5px 20px rgba(0,0,0,0.1);</span>
+                </div>
+                
+                <div class="property">
+                    <span class="prop-name">text-shadow:</span><br>
+                    <span class="prop-value">2px 2px 4px rgba(0,0,0,0.3);</span>
+                </div>
+                
+                <div class="property">
+                    <span class="prop-name">transition:</span><br>
+                    <span class="prop-value">all 0.3s ease;</span>
+                </div>
+                
+                <div class="property">
+                    <span class="prop-name">transform:</span><br>
+                    <span class="prop-value">rotate(45deg) scale(1.2);</span>
+                </div>
+                
+                <div class="property">
+                    <span class="prop-name">cursor:</span><br>
+                    <span class="prop-value">pointer | default | move | text</span>
+                </div>
+            </div>
+
+            <!-- Common Patterns -->
+            <div class="reference-card">
+                <h2>Common Patterns</h2>
+                
+                <h3>Center with Flexbox</h3>
+                <div class="example">
+.container {<br>
+&nbsp;&nbsp;display: flex;<br>
+&nbsp;&nbsp;justify-content: center;<br>
+&nbsp;&nbsp;align-items: center;<br>
+}
+                </div>
+
+                <h3>Center with Grid</h3>
+                <div class="example">
+.container {<br>
+&nbsp;&nbsp;display: grid;<br>
+&nbsp;&nbsp;place-items: center;<br>
+}
+                </div>
+
+                <h3>Responsive Grid</h3>
+                <div class="example">
+.container {<br>
+&nbsp;&nbsp;display: grid;<br>
+&nbsp;&nbsp;grid-template-columns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;repeat(auto-fit, minmax(250px, 1fr));<br>
+}
+                </div>
+
+                <h3>Card Hover Effect</h3>
+                <div class="example">
+.card {<br>
+&nbsp;&nbsp;transition: transform 0.3s;<br>
+}<br>
+.card:hover {<br>
+&nbsp;&nbsp;transform: translateY(-5px);<br>
+}
+                </div>
+            </div>
+
+            <!-- Media Queries -->
+            <div class="reference-card">
+                <h2>Responsive Design</h2>
+                
+                <h3>Media Queries</h3>
+                <div class="example">
+/* Mobile First */<br>
+@media (min-width: 768px) {<br>
+&nbsp;&nbsp;.container {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;max-width: 1200px;<br>
+&nbsp;&nbsp;}<br>
+}
+                </div>
+
+                <div class="example">
+/* Desktop First */<br>
+@media (max-width: 768px) {<br>
+&nbsp;&nbsp;.grid {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;grid-template-columns: 1fr;<br>
+&nbsp;&nbsp;}<br>
+}
+                </div>
+
+                <h3>Common Breakpoints</h3>
+                <div class="section-note">
+                    <strong>Mobile:</strong> 320px - 480px<br>
+                    <strong>Tablet:</strong> 481px - 768px<br>
+                    <strong>Desktop:</strong> 769px - 1024px<br>
+                    <strong>Large Desktop:</strong> 1025px+
+                </div>
+            </div>
+
+            <!-- Selectors -->
+            <div class="reference-card">
+                <h2>Selectors</h2>
+                
+                <div class="property">
+                    <span class="prop-name">element</span> <span style="color: #666;">{ }</span>
+                    <span style="color: #666;">/* Type selector */</span>
+                </div>
+                
+                <div class="property">
+                    <span class="prop-name">.class</span> <span style="color: #666;">{ }</span>
+                    <span style="color: #666;">/* Class selector */</span>
+                </div>
+                
+                <div class="property">
+                    <span class="prop-name">#id</span> <span style="color: #666;">{ }</span>
+                    <span style="color: #666;">/* ID selector */</span>
+                </div>
+                
+                <div class="property">
+                    <span class="prop-name">*</span> <span style="color: #666;">{ }</span>
+                    <span style="color: #666;">/* Universal selector */</span>
+                </div>
+                
+                <div class="property">
+                    <span class="prop-name">element, element</span> <span style="color: #666;">{ }</span>
+                    <span style="color: #666;">/* Group selector */</span>
+                </div>
+                
+                <div class="property">
+                    <span class="prop-name">element element</span> <span style="color: #666;">{ }</span>
+                    <span style="color: #666;">/* Descendant */</span>
+                </div>
+                
+                <div class="property">
+                    <span class="prop-name">element > element</span> <span style="color: #666;">{ }</span>
+                    <span style="color: #666;">/* Child */</span>
+                </div>
+                
+                <div class="property">
+                    <span class="prop-name">element:hover</span> <span style="color: #666;">{ }</span>
+                    <span style="color: #666;">/* Pseudo-class */</span>
+                </div>
+            </div>
+
+            <!-- Units -->
+            <div class="reference-card">
+                <h2>CSS Units</h2>
+                
+                <h3>Absolute Units</h3>
+                <div class="property">
+                    <span class="prop-value">px</span> <span style="color: #666;">/* Pixels */</span>
+                </div>
+                
+                <h3>Relative Units</h3>
+                <div class="property">
+                    <span class="prop-value">%</span> <span style="color: #666;">/* Percentage */</span>
+                </div>
+                
+                <div class="property">
+                    <span class="prop-value">em</span> <span style="color: #666;">/* Relative to parent font-size */</span>
+                </div>
+                
+                <div class="property">
+                    <span class="prop-value">rem</span> <span style="color: #666;">/* Relative to root font-size */</span>
+                </div>
+                
+                <div class="property">
+                    <span class="prop-value">vw</span> <span style="color: #666;">/* 1% of viewport width */</span>
+                </div>
+                
+                <div class="property">
+                    <span class="prop-value">vh</span> <span style="color: #666;">/* 1% of viewport height */</span>
+                </div>
+                
+                <div class="property">
+                    <span class="prop-value">fr</span> <span style="color: #666;">/* Fraction (Grid only) */</span>
+                </div>
+
+                <div class="section-note">
+                    <strong>Tip:</strong> Use <code>rem</code> for font sizes, <code>px</code> for borders
+                </div>
+            </div>
+        </div>
+
+        <div class="header" style="margin-top: 30px;">
+            <h2>💡 Pro Tips</h2>
+            <ul style="margin-left: 20px; line-height: 2;">
+                <li>Always use <code>box-sizing: border-box;</code> for predictable sizing</li>
+                <li>Use Flexbox for one-dimensional layouts (rows OR columns)</li>
+                <li>Use Grid for two-dimensional layouts (rows AND columns)</li>
+                <li>Mobile-first approach is often easier (start small, add styles for larger screens)</li>
+                <li>Use CSS variables for maintainable code: <code>--primary-color: #667eea;</code></li>
+                <li>Test your layouts in different browsers and screen sizes</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

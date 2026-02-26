@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Playground - Experiment Here!</title>
+    <style>
+        /* ====================================
+           YOUR EXPERIMENTATION ZONE
+           Modify these styles to practice!
+           ==================================== */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f0f0f0;
+        }
+
+        .header {
+            background: #3498db;
+            color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+
+        /* EXPERIMENT 1: Try changing flex properties below */
+        .flex-container {
+            display: flex;
+            /* Try changing these: */
+            flex-direction: row;  /* Try: column, row-reverse, column-reverse */
+            justify-content: flex-start;  /* Try: center, space-between, space-around */
+            align-items: stretch;  /* Try: center, flex-start, flex-end */
+            gap: 10px;
+            
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+
+        .flex-item {
+            background: #e74c3c;
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            /* Try adding: flex: 1; to see what happens */
+        }
+
+        /* EXPERIMENT 2: Try changing grid properties below */
+        .grid-container {
+            display: grid;
+            /* Try changing these: */
+            grid-template-columns: 1fr 1fr 1fr;  /* Try: repeat(4, 1fr), 200px 1fr 200px */
+            grid-template-rows: auto;
+            gap: 15px;
+            
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+
+        .grid-item {
+            background: #2ecc71;
+            color: white;
+            padding: 30px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        /* EXPERIMENT 3: Create your own layout below */
+        .my-layout {
+            /* Start experimenting here! */
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .my-item {
+            background: #9b59b6;
+            color: white;
+            padding: 15px;
+            margin: 10px;
+            border-radius: 5px;
+        }
+
+        /* EXPERIMENT 4: Build a mini card component */
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            /* Add your styles here */
+        }
+
+        .card-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            /* Style the title */
+        }
+
+        .card-content {
+            color: #666;
+            /* Style the content */
+        }
+
+        .instructions {
+            background: #fff3cd;
+            padding: 15px;
+            border-left: 4px solid #ffc107;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+            color: #e83e8c;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🎨 CSS Playground</h1>
+        <p>Modify the CSS in the &lt;style&gt; tag above to experiment with different layouts!</p>
+    </div>
+
+    <div class="instructions">
+        <h3>📝 Instructions:</h3>
+        <ol>
+            <li>Open this file in your code editor</li>
+            <li>Find the &lt;style&gt; tag at the top</li>
+            <li>Modify the CSS properties</li>
+            <li>Save and refresh to see your changes</li>
+        </ol>
+    </div>
+
+    <!-- EXPERIMENT 1: Flexbox -->
+    <section>
+        <h2>Experiment 1: Flexbox Container</h2>
+        <p>Modify <code>.flex-container</code> properties above</p>
+        <div class="flex-container">
+            <div class="flex-item">Item 1</div>
+            <div class="flex-item">Item 2</div>
+            <div class="flex-item">Item 3</div>
+            <div class="flex-item">Item 4</div>
+        </div>
+    </section>
+
+    <!-- EXPERIMENT 2: Grid -->
+    <section>
+        <h2>Experiment 2: Grid Container</h2>
+        <p>Modify <code>.grid-container</code> properties above</p>
+        <div class="grid-container">
+            <div class="grid-item">1</div>
+            <div class="grid-item">2</div>
+            <div class="grid-item">3</div>
+            <div class="grid-item">4</div>
+            <div class="grid-item">5</div>
+            <div class="grid-item">6</div>
+        </div>
+    </section>
+
+    <!-- EXPERIMENT 3: Your Own Layout -->
+    <section>
+        <h2>Experiment 3: Create Your Own Layout</h2>
+        <p>Style <code>.my-layout</code> however you want! Use Flexbox or Grid.</p>
+        <div class="my-layout">
+            <div class="my-item">Your Item 1</div>
+            <div class="my-item">Your Item 2</div>
+            <div class="my-item">Your Item 3</div>
+            <div class="my-item">Your Item 4</div>
+        </div>
+    </section>
+
+    <!-- EXPERIMENT 4: Card Component -->
+    <section>
+        <h2>Experiment 4: Style This Card</h2>
+        <p>Make this card look beautiful! Add hover effects, shadows, colors, etc.</p>
+        <div class="card">
+            <h3 class="card-title">Card Title</h3>
+            <p class="card-content">This is some card content. Make it look amazing with CSS!</p>
+            <p class="card-content">Try adding hover effects, transitions, borders, or anything else you can think of.</p>
+        </div>
+    </section>
+
+    <div class="instructions" style="margin-top: 40px; background: #d1ecf1; border-left-color: #0c5460;">
+        <h3>💡 Challenge Ideas:</h3>
+        <ul>
+            <li>Create a navigation bar using Flexbox</li>
+            <li>Build a photo gallery grid that's responsive</li>
+            <li>Make a pricing table with 3 columns</li>
+            <li>Design a footer with multiple sections</li>
+            <li>Build a simple login form with centered layout</li>
+        </ul>
+    </div>
+</body>
+</html>
