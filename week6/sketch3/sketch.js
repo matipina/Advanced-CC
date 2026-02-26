@@ -10,9 +10,8 @@ async function setup() {
   noCanvas();
   video = createCapture(VIDEO);
   video.hide();
-  video.size(1920 / 10, 1080 / 10);
+  video.size(1920 / 16, 1080 / 16);
   asciiDiv = createDiv();
-  pixelDensity(1);
 }
 
 function draw() {
