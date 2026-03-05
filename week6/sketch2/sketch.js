@@ -3,21 +3,24 @@ const density = "         _.,-=+:;cba!?0123456789$W#@Ñ";
 //const density = "  .:░▒▓█";
 
 const len = density.length;
+let pixelScale = 8;
+let pixelScaleSlider;
 let knight;
-const pixelScale = 8;
+
 
 async function setup() {
   createCanvas(800, 800);
-  knight = await loadImage("../assets/knight02.png");
+  knight = await loadImage("../assets/knight2.png");
 
   // loadPixels is needed so we can access the pixel array of the image!
   knight.loadPixels();
   textAlign(CENTER, CENTER);
+  pixelScaleSlider = createSlider(8, 80, 8, 1);
 }
 
 function draw() {
+  pixelScale = pixelScaleSlider.value();
   background(0);
-  //image(knight, 0, 0, width, height);
 
   let w = width / knight.width;
   let h = height / knight.height;
@@ -40,5 +43,4 @@ function draw() {
       text(char, i * w + w * pixelScale * 0.5, j * h + h * pixelScale * 0.5);
     }
   }
-  noLoop();
 }

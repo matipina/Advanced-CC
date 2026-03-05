@@ -1,17 +1,23 @@
 let knight;
-const pixelScale = 10;
+let pixelScale = 10;
+let imageIndex;
+let imagePath;
+let newPixelScale;
 
 async function setup() {
-  createCanvas(800, 800);
-  knight = await loadImage("../assets/knight08.png");
+  imageIndex = Math.floor(random(10));
+  imagePath = "../assets/knight" + imageIndex + ".png";
 
+  createCanvas(780, 780);
+  knight = await loadImage(imagePath);
   // loadPixels is needed so we can access the pixel array of the image!
   knight.loadPixels();
+  newPixelScale = createSlider(8, width/4, 10, 1);
 }
 
 function draw() {
+  pixelScale = newPixelScale.value();
   background(0);
-  //image(knight, 0, 0, width, height);
 
   let w = width / knight.width;
   let h = height / knight.height;
@@ -28,5 +34,4 @@ function draw() {
       rect(i * w, j * h, w * pixelScale);
     }
   }
-  noLoop();
 }
