@@ -1,0 +1,312 @@
+/* =========================================
+   Week 11 - Palindrome Demo CSS
+   A minimalist, modern styling setup using Schibsted Grotesk.
+========================================= */
+
+/* CSS Variables for easy color management */
+:root {
+    --bg-color: #FAFAFA; /* Off-white */
+    --text-color: #111111; /* Near black */
+    --accent-color: #111111; /* Black buttons/accents */
+    
+    /* Semantic states */
+    --success-bg: #E8F5E9; /* Light Mint Green */
+    --success-text: #2E7D32; /* Dark Green */
+    
+    --error-bg: #FFEBEE; /* Light Red */
+    --error-text: #C62828; /* Dark Red */
+    
+    --warning-bg: #FFF3E0; /* Light Orange */
+    --warning-text: #EF6C00; /* Dark Orange */
+    
+    --font-main: 'Schibsted Grotesk', sans-serif;
+    font-optical-sizing: auto;
+    --transition-speed: 0.3s;
+}
+
+/* Global Reset & Box Sizing */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Base Body Styling */
+body {
+    background-color: #FFFFFF;
+    color: var(--text-color);
+    font-family: var(--font-main);
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
+    
+    /* Smooth transition for body background color changes */
+    transition: background-color var(--transition-speed) ease;
+}
+
+/* Main Container - Centered focus design */
+.container {
+    max-width: 700px;
+    width: 100%;
+    text-align: center;
+    padding: 2rem;
+}
+
+/* Typography */
+header {
+    margin-bottom: 2rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.5px;
+}
+
+p {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+/* Form Styles */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 2.5rem;
+}
+
+/* Input and buttons in a row */
+.input-with-buttons {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+input[type="text"] {
+    flex: 1;
+    min-width: 200px;
+    max-width: 500px;
+    padding: 1rem 0;
+    font-size: 1.5rem;
+    font-family: var(--font-main);
+    text-align: center;
+    border: none;
+    border-bottom: 2px solid #E8E8E8;
+    border-radius: 0;
+    outline: none;
+    background-color: transparent;
+    transition: border-color var(--transition-speed) ease;
+}
+
+input[type="text"]:focus {
+    border-color: var(--accent-color);
+}
+
+/* Character counter - shows real-time count as user types */
+.char-counter-container {
+    width: 100%;
+    text-align: center;
+}
+
+.char-counter {
+    font-size: 0.95rem;
+    color: #999;
+    font-style: italic;
+}
+
+/* Buttons in the input row */
+.input-with-buttons button {
+    display: none; /* Removed from here */
+}
+
+/* Secondary button style (Flip) */
+button.secondary-btn {
+    background-color: #CCCCCC;
+    color: #333333;
+    padding: 0.95rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: var(--font-main);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.1s ease, background-color var(--transition-speed) ease;
+}
+
+button.secondary-btn:hover {
+    background-color: #BBBBBB;
+}
+
+#flipBtn {
+    grid-column: 3;
+    justify-self: end;
+}
+
+/* Check button positioned below - separate form submission */
+.button-group-check {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.button-group-check button {
+    padding: 0.95rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    font-family: var(--font-main);
+    color: #FFFFFF;
+    background-color: var(--accent-color);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.1s ease, background-color var(--transition-speed) ease;
+}
+
+.button-group-check button:hover {
+    background-color: #333333;
+}
+
+.button-group-check button:active {
+    transform: scale(0.98);
+}
+
+/* Visualization / Animation Area - Centered focus */
+.visualization-area {
+    min-height: 100px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    margin-bottom: 2rem;
+    width: 100%;
+    gap: 1rem;
+}
+
+/* The word display box */
+.word-display {
+    grid-column: 2;
+    font-size: 2.2rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 1.5rem 2rem;
+    background-color: transparent;
+    border: none;
+    min-width: 200px;
+    min-height: 60px;
+    word-break: break-all;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* Smooth transition for content and styling */
+    transition: opacity var(--transition-speed) ease, transform var(--transition-speed) ease;
+}
+
+/* Result Message Box */
+.result-message {
+    padding: 1.5rem;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    transition: opacity var(--transition-speed) ease, transform var(--transition-speed) ease;
+}
+
+/* State Classes (Added via JavaScript) */
+body.state-success {
+    background-color: #FFFFFF;
+}
+
+body.state-error {
+    background-color: #FFFFFF;
+}
+
+.result-message.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.result-message.success {
+    background-color: var(--success-bg);
+    color: var(--success-text);
+    border: 1px solid rgba(46, 125, 50, 0.2);
+}
+
+.result-message.error {
+    background-color: var(--error-bg);
+    color: var(--error-text);
+    border: 1px solid rgba(198, 40, 40, 0.2);
+}
+
+.result-message.warning {
+    background-color: var(--warning-bg);
+    color: var(--warning-text);
+    border: 1px solid rgba(239, 108, 0, 0.2);
+}
+
+/* High Score Display - for data saved in localStorage */
+.high-score-container {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    transition: opacity var(--transition-speed) ease, visibility var(--transition-speed) ease;
+}
+
+.high-score-container.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.high-score-container.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.high-score-label {
+    font-size: 0.8rem;
+    color: #999;
+    margin-bottom: 0.2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.high-score-content {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--accent-color);
+    margin-bottom: 0.3rem;
+}
+
+/* Clear High Score button */
+button.clear-btn {
+    background: none;
+    color: #999;
+    border: none;
+    padding: 0;
+    font-size: 0.8rem;
+    text-decoration: underline;
+    cursor: pointer;
+    width: auto;
+}
+
+button.clear-btn:hover {
+    color: #E57373;
+    background: none;
+}
+
+button.clear-btn:active {
+    transform: none;
+}

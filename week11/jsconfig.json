@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "es6"
+  },
+  "include": [
+    "*.js",
+    "**/*.js"
+  ],
+  "exclude": [
+    "extension/**/*"
+  ]
+}</content>
+<parameter name="filePath">/Users/matipina/Documents/Parsons/Teaching/Advanced-CC/week11/jsconfig.json

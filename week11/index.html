@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindrome Checker</title>
+    <!-- Modern, minimal Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Is it a Palindrome?</h1>
+            <p>A palindrome reads the same forwards and backwards. Type a word or phrase below to check.</p>
+        </header>
+
+        <main>
+            <!-- 
+              Using a form element allows us to intercept the submission 
+              and prevent the page from reloading.
+            -->
+            <form id="palindromeForm" class="input-group">
+                <div class="input-with-buttons">
+                    <input 
+                        type="text" 
+                        id="wordInput" 
+                        placeholder="e.g. racecar, level, madam" 
+                        autocomplete="off"
+                    >
+                </div>
+                <!-- Character counter: updated in real-time by JavaScript -->
+                <div class="char-counter-container">
+                    <span id="charCount" class="char-counter">0 characters</span>
+                </div>
+            </form>
+
+            <!-- This is where we will visually display the word -->
+            <div class="visualization-area">
+                <div id="wordDisplay" class="word-display">
+                    <!-- The word will appear here, and toggle when the button is pressed -->
+                </div>
+                <!-- Flip button: Triggers a standard click event -->
+                <button id="flipBtn" class="secondary-btn" type="button">Flip</button>
+            </div>
+
+            <!-- Submit button inside the form automatically triggers the 'submit' event -->
+            <form id="checkForm" class="button-group-check">
+                <button type="submit" id="checkBtn" form="palindromeForm">Check</button>
+            </form>
+
+            <!-- The final result message will appear here -->
+            <div id="resultMessage" class="result-message hidden">
+                <!-- JavaScript will inject result text here -->
+            </div>
+        </main>
+
+            <!-- High score section: Data saved in the browser's localStorage -->
+            <div id="highScoreContainer" class="high-score-container hidden">
+                <p class="high-score-label">Best Palindrome</p>
+                <p id="highScoreDisplay" class="high-score-content"></p>
+                <button id="clearHighScoreBtn" class="clear-btn" type="button">Reset</button>
+            </div>
+    </div>
+
+    <!-- Load logic first, then the DOM script -->
+    <script src="logic.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
