@@ -1,0 +1,25 @@
+body {
+    font-family: sans-serif;
+    padding: 2rem;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.search-box {
+    margin-bottom: 2rem;
+}
+
+input {
+    padding: 8px;
+    font-size: 1rem;
+}
+
+button {
+    padding: 8px 16px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+#artwork img {
+    max-width: 100%;
+}
